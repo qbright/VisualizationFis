@@ -1,0 +1,39 @@
+{
+  "softwareDownloadPath":{
+      "Java":"http://www.java.com/zh_CN/download/",
+      "PHP":"http://windows.php.net/download/",
+      "Node":"http://nodejs.org/download/"
+    },
+  "command":{
+      "checkJava":"java -version",
+      "checkNode":"node -v",
+      "checkPHP":"php-cgi -v",
+      "checkFis":"fis --no-color -v",
+
+      "server_open":"fis server open",
+      "server_info":"fis server info",
+      "server_start":"fis server start --no-rewrite -p ",
+      "server_stop":"fis server stop",
+      "server_restart":"fis server restart",
+      "server_clean":"fis server clean",
+      "server_install_smarty":"fis server install smarty",
+      "release":"fis release ",
+      "md5":"--md5 ",
+      "optimize":"--optimize ",
+      "pack":"--pack ",
+      "lint":"--lint ",
+      "domains":"--domains ",
+      "clean":"--clean ",
+      "test":"--test ",
+      "dest":"--dest ",
+      "watch":"--watch ",
+      "live":"--live ",
+      "release_stop":"taskkill /T /F /PID ",
+      "install_repos":"fis install --repos ",
+      "set_path":"wmic ENVIRONMENT where \"name='Path' and username='<system>'\" set VariableValue=\"%Path%;",
+      "set_fis":"npm i -g fis"
+  },
+    "unsoftMap":["Node","Java","PHP","FIS"],
+    "fisTmp":"C:\\Users\\Administrator\\AppData\\Local\\.fis-tmp"
+
+}

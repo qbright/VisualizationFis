@@ -1,0 +1,16 @@
+{
+  "name": "fis",
+  "main": "index.html",
+  "window":{
+      "width":780,
+      "height":795,
+      "frame":false,
+      "toolbar":false,
+      "resizable":false
+  },
+  "devDependencies": {
+   	"async":"*",
+   	"mkdirp":"*",
+   	"node-zip":"*"
+  }
+}

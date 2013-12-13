@@ -1,0 +1,32 @@
+.server_container{
+    width:100%;
+}
+.normal{
+    color: #248EC4;
+}
+.danger{
+    color:#DD4D4A;
+}
+.good{
+    color: #4E9E4F;
+}
+.bold{
+    font-weight: bold;
+}
+.container_bar{
+    padding: 15px 20px;
+    color: #777;
+    background-color: #FAFAFA;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.container_bar[class*="main"]{
+}
+.input-group,.btn-group{
+    padding:5px 0;
+}
+body,section{
+    -webkit-user-select:none;
+}
+

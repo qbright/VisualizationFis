@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+    <meta charset='utf-8'>
+    <script src="js/lib/jquery.js"></script>
+    <script>
+        var gui = require("nw.gui");
+        var win = gui.Window.get();
+        win.showDevTools();
+        win.on("devtools-closed",function(){
+            win.showDevTools();
+        });
+      
+    </script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-3.0.3-dist/dist/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-3.0.3-dist/dist/css/bootstrap-theme.min.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <style>
+        button[hidden]{
+            display: none;
+        }
+    </style>
+  </head>
+  <body >
+      <nav class="navbar navbar-default navbar-inverse"
+           style="-webkit-app-region: drag;margin-bottom: 0;border-radius: 0;border-bottom: 1px solid rgb(160, 160, 160);" role="navigation">
+          <a class="navbar-brand" href="#">Fis 可视化工具</a>
+
+          <p class="navbar-text navbar-right" style="-webkit-app-region:no-drag;">
+              <span class="glyphicon glyphicon-resize-small" id="win_mini_btn" style="margin:0 5px;cursor: pointer"></span>
+              <span class="glyphicon glyphicon-remove" id="win_close_btn" style="margin:0 5px;cursor: pointer"></span>
+          </p>
+
+
+
+      </nav>
+    <section id="fis_install">
+        <div class="container_bar main">
+            <span class="normal bold">您的系统中有未安装的软件 (请按照顺序安装) ---安装完成之后请重启软件 </span>
+            <button type="button" id="install_Node_btn" class="btn btn-primary installBtn disabled" disabled hidden>Node</button>
+            <button type="button" id="install_Java_btn" class="btn btn-primary installBtn disabled" disabled hidden>Java</button>
+            <button type="button" id="install_PHP_btn" data-loading-text="安装中..."  class="btn btn-primary installBtn disabled" disabled hidden>PHP</button>
+            <button type="button" id="install_FIS_btn" data-loading-text="安装中..."  class="btn btn-primary installBtn disabled" disabled hidden>FIS</button>
+
+        </div>
+        <div class="container_bar main">
+            <h3 class="normal">安装Node</h3>
+            <ul >
+                <li> <p><a href="#" id="install_Node">下载软件</a></p> </li>
+                <li> 运行安装包全部按照默认的安装 </li>
+            </ul>
+        </div>
+        <div class="container_bar main">
+            <h3 class="normal">安装Java</h3>
+            <ul >
+                <li> <p><a href="#" id="install_Java">下载软件</a></p> </li>
+                <li> 运行安装包全部按照默认的安装 </li>
+            </ul>
+        </div>
+        <div class="container_bar main">
+            <h3 class="normal">安装PHP</h3>
+            <ul >
+                <li> <p><a href="#" id="install_PHP">下载软件</a></p> </li>
+                <li> 请下载Thread Safe 的 zip 版本 </li>
+                <li> 下载完成后解压到某个盘中 (推荐 C盘根目录下) </li>
+                <li> 配置解压路径的PHP的环境变量 （我的电脑 > 右键 > 属性 > 高级系统设置 > 高级  > 环境变量）</li>
+                <li> 在系统变量中找到Path变量(如果没有的话请新建一个),添加解压路径，与前面的路径以分号隔开</li>
+            </ul>
+        </div>
+        <div class="container_bar main">
+            <h3 class="normal">安装FIS (请先确保安装了NodeJs)</h3>
+            <ul >
+                <li> 打开命令行 ( win + R 然后输入cmd )</li>
+                <li> 输入 <code> npm i -g fis </code> 等待安装完成</li>
+                <li> 安装完成后可使用 <code> fis -v </code> 检验安装情况，如果出现版本信息则表示安装成功 </li>
+
+            </ul>
+        </div>
+
+
+    </section>
+
+
+
+
+      <script src="js/lib/async.js"></script>
+      <script src="css/bootstrap-3.0.3-dist/dist/js/bootstrap.min.js"></script>
+    <script src="js/install.js"></script>
+  </body>
+</html>

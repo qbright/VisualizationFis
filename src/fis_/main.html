@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+    <meta charset='utf-8'>
+    <script src="js/lib/jquery.js"></script>
+    <script>
+        var gui = require("nw.gui");
+        var win = gui.Window.get();
+        win.showDevTools();
+        win.on("devtools-closed",function(){
+            win.showDevTools();
+        });
+    </script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-3.0.3-dist/dist/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-3.0.3-dist/dist/css/bootstrap-theme.min.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+
+  </head>
+  <body >
+      <nav class="navbar navbar-default navbar-inverse"
+           style="-webkit-app-region: drag;margin-bottom: 0;border-radius: 0;border-bottom: 1px solid rgb(160, 160, 160);" role="navigation">
+          <a class="navbar-brand" href="#">Fis 可视化工具</a>
+
+          <p class="navbar-text navbar-right" style="-webkit-app-region:no-drag;">
+              <span class="glyphicon glyphicon-resize-small" id="win_mini_btn" style="margin:0 5px;cursor: pointer"></span>
+              <span class="glyphicon glyphicon-remove" id="win_close_btn" style="margin:0 5px;cursor: pointer"></span>
+          </p>
+
+
+
+      </nav>
+    <section id="fis_install">
+        <div class="container_bar main">
+            <span class="normal bold">Fis Install</span>
+        </div>
+        <div class="container_bar main">
+           <form id="install_form">
+            <div class="input-group">
+                <span class="input-group-addon">安装路径</span>
+                <input type="text" name="cwd" id="install_repos_cwd" class="form-control" placeholder="安装路径" readonly>
+                <span class="input-group-btn">
+                     <input type="file" id="install_repos_cwd_chooser" style="display: none;" nwdirectory  />
+                     <button type="button" id="install_repos_cwd_btn" class="btn btn-primary">选择</button>
+                </span>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">URL</span>
+                <input type="text" name="url" id="install_repos_url" class="form-control" placeholder="URL">
+                <span class="input-group-btn">
+                     <button type="button" id="install_repos_btn" data-loading-text="安装中..."  class="btn btn-primary">安装</button>
+                </span>
+            </div>
+           </form>
+        </div>
+
+
+    </section>
+    <div class="progress progress-striped active" style="border-radius: 0%;margin-bottom: 0">
+      <div class="progress-bar"  role="progressbar" style="width: 100%">
+          <span class="sr-only">45</span>
+      </div>
+    </div>
+    <section id="fis_server">
+        <div class="container_bar main">
+            <span class="normal bold">调试服务器状态 : </span>
+            <span class="danger bold" id="server_status_stop">未启动</span>
+            <span class="good bold" id="server_status_start" hidden>已启动</span>
+
+        </div>
+        <div class="container_bar" style="text-align: center;">
+            <button type="button" data-loading-text="启动中..." id="server_start" class="btn btn-success">启动</button>
+            <button type="button" data-loading-text="关闭中..." id="server_stop" class="btn btn-danger" >关闭</button>
+            <button type="button" data-loading-text="重启中..." id="server_restart" class="btn btn-warning">重启</button>
+            <button type="button" data-loading-text="清理中..." id="server_clean" class="btn btn-info">清理</button>
+            <button type="button" id="server_open" class="btn btn-primary" >打开目录</button>
+        </div>
+        <div class="container_bar">
+            <div class="input-group" style="width:50%;">
+                <span class="input-group-addon" >端口</span>
+                <input  type="text" id="server_port" class="form-control" placeholder="端口号" >
+            </div>
+          <!--  <div class="input-group">
+                <span class="input-group-addon">服务器文件路径</span>
+                <input type="text" id="server_root" class="form-control" placeholder="服务器文件路径" readonly>
+                <span class="input-group-btn">
+                     <input type="file" id="server_root_chooser" style="display: none;" nwdirectory  />
+                     <button type="button" id="server_root_btn" class="btn btn-primary">更改</button>
+                </span>
+            </div>-->
+
+
+        </div>
+    </section>
+    <div class="progress progress-striped active" style="border-radius: 0%;margin-bottom: 0">
+        <div class="progress-bar"  role="progressbar" style="width: 100%">
+            <span class="sr-only">45</span>
+        </div>
+    </div>
+    <section id="fis_release">
+
+     <form id="release_form">
+        <div class="container_bar main">
+            <span class="normal bold">发布项目 </span>
+        </div>
+        <div class="container_bar main">
+            <div class="input-group">
+                <span class="input-group-addon">项目路径</span>
+                <input type="text" name="cwd" id="release_root" class="form-control" placeholder="项目路径" readonly>
+                    <span class="input-group-btn">
+                         <input type="file" id="release_root_chooser" style="display: none;" nwdirectory  />
+                         <button type="button" id="release_root_btn" class="btn btn-primary">选择</button>
+                    </span>
+            </div>
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary active" >
+                    <input type="checkbox" name="optimize" data-type="optimize" checked> 压缩
+                </label>
+                <label class="btn btn-primary">
+                    <input type="checkbox" name="md5" data-type="md5"> MD5戳
+                </label>
+                <label class="btn btn-primary">
+                    <input type="checkbox" name="pack" data-type="pack"> 打包
+                </label>
+                <label class="btn btn-primary">
+                    <input type="checkbox" name="lint" data-type="lint"> 代码校验
+                </label>
+                <label class="btn btn-primary">
+                    <input type="checkbox" name="test" data-type="test"> 测试
+                </label>
+                <label class="btn btn-primary">
+                    <input type="checkbox" name="domains" data-type="domains"> 添加域名
+                </label>
+                <label class="btn btn-primary">
+                    <input type="checkbox" name="clean" data-type="clean"> 清除缓存
+                </label>
+            </div>
+            <div class="input-group">
+                <span class="input-group-btn">
+                     <button type="button" id="release_dest_on_btn"  class="btn btn-primary" data-toggle="button">项目输出到</button>
+                </span>
+                <input data-type="dest" id="release_dest" name="dest" type="text" class="form-control" placeholder="输出路径" >
+                    <span class="input-group-btn">
+                         <input type="file" id="release_dest_chooser" style="display: none;" nwdirectory  />
+                         <button type="button" id="release_dest_btn" class="btn btn-primary">选择</button>
+                    </span>
+            </div>
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary">
+                    <input type="checkbox" name="watch" data-type="watch"> 监控文件
+                </label>
+                <label class="btn btn-primary">
+                    <input type="checkbox" name="live" data-type="live"> 监控刷新
+                </label>
+            </div>
+            <div style="float: right; padding: 10px 0;" hidden>
+                <button type="button" id="release_watch_stop" class="btn btn-danger" >停止监控</button>
+            </div>
+        </div>
+        <div class="container_bar main">
+            <button type="button" data-loading-text="发布中..."  id="release_btn" class="btn btn-primary btn-lg btn-block">发布</button>
+        </div>
+     </form>
+    </section>
+
+
+    <script src="js/lib/async.js"></script>
+      <script src="css/bootstrap-3.0.3-dist/dist/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

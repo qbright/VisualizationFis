@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+    <script>
+        var gui = require("nw.gui");
+        var win = gui.Window.get();
+        win.showDevTools();
+        win.on("devtools-closed",function(){
+            win.showDevTools();
+        });
+
+    </script>
+  </head>
+  <body>
+    <script src="js/lib/jquery.js"></script>
+    <script src="js/lib/async.js"></script>
+    <script src="js/index.js"></script>
+
+  </body>
+</html>
